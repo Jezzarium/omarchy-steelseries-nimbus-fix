@@ -17,14 +17,14 @@ Item {
     stderr: SplitParser {
       onRead: function(line) {
         if (line.trim().length > 0) {
-          console.warn("[steelseries.nimbus-fix]", line)
+          console.warn("[io.github.jezzarium.steelseries-nimbus-fix]", line)
         }
       }
     }
 
     onExited: function(exitCode) {
       if (!root.shuttingDown && exitCode !== 0) {
-        console.warn("[steelseries.nimbus-fix] daemon exited with code", exitCode, "- restarting")
+        console.warn("[io.github.jezzarium.steelseries-nimbus-fix] daemon exited with code", exitCode, "- restarting")
         restartTimer.restart()
       }
     }

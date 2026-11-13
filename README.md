@@ -1,4 +1,4 @@
-# SteelSeries Nimbus Fix (`steelseries.nimbus-fix`)
+# SteelSeries Nimbus Fix (`io.github.jezzarium.steelseries-nimbus-fix`)
 
 Headless Omarchy shell service plugin that fixes Linux input handling for the **SteelSeries Nimbus** Bluetooth controller (`0111:1420`) by reading raw HID reports via `/dev/hidraw*` and exposing a standard **Microsoft X-Box 360 pad** (`045e:028e`) via `/dev/uinput`.
 
@@ -29,7 +29,7 @@ The udev rule runs at priority `71-` (before systemd's `73-seat-late.rules`) so 
 Install (or upgrade from the legacy `99-` rule) once:
 
 ```bash
-~/.config/omarchy/plugins/steelseries.nimbus-fix/install-udev.sh
+~/.config/omarchy/plugins/io.github.jezzarium.steelseries-nimbus-fix/install-udev.sh
 ```
 
 Then reconnect your Nimbus controller (or restart Steam).
@@ -53,11 +53,20 @@ Then reconnect your Nimbus controller (or restart Steam).
 
 ```bash
 omarchy plugin add https://github.com/Jezzarium/omarchy-steelseries-nimbus-fix.git --enable
-~/.config/omarchy/plugins/steelseries.nimbus-fix/install-udev.sh
+~/.config/omarchy/plugins/io.github.jezzarium.steelseries-nimbus-fix/install-udev.sh
 ```
 
 Or validate a local checkout:
 
 ```bash
-omarchy plugin validate ~/.config/omarchy/plugins/steelseries.nimbus-fix
+omarchy plugin validate ~/.config/omarchy/plugins/io.github.jezzarium.steelseries-nimbus-fix
+```
+
+## Remove
+
+```bash
+omarchy plugin remove io.github.jezzarium.steelseries-nimbus-fix
+sudo rm -f /etc/udev/rules.d/71-steelseries-nimbus-fix.rules
+sudo udevadm control --reload-rules
+sudo udevadm trigger --subsystem-match=input --subsystem-match=hidraw
 ```

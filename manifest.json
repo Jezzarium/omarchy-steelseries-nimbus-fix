@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "steelseries.nimbus-fix",
+  "id": "io.github.jezzarium.steelseries-nimbus-fix",
   "name": "SteelSeries Nimbus Fix",
   "version": "1.1.0",
   "author": "Jezzarium",
