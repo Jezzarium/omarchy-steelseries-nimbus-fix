@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "steelseries.nimbus-fix",
+  "name": "SteelSeries Nimbus Fix",
+  "version": "1.1.0",
+  "author": "Jezzarium",
+  "license": "MIT",
+  "description": "Headless service that reads SteelSeries Nimbus raw HID reports via hidraw and exposes a standard Xbox 360 gamepad via uinput, fixing the D-pad, analog triggers, face buttons, and stick axes.",
+  "kinds": [
+    "service"
+  ],
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}

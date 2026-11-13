@@ -1,0 +1,8 @@
+# Expose SteelSeries Nimbus (0111:1420) hidraw node to the active seat user so
+# steelseries.nimbus-fix can parse the 17-byte MFi HID reports directly.
+ACTION!="remove", SUBSYSTEM=="hidraw", ATTRS{id/bustype}=="0005", ATTRS{id/vendor}=="0111", ATTRS{id/product}=="1420", ENV{ID_INPUT}="", ENV{ID_INPUT_JOYSTICK}="", ENV{ID_INPUT_KEY}="", ENV{LIBINPUT_IGNORE_DEVICE}="1", TAG+="uaccess", OWNER="root", GROUP="input", MODE="0660"
+
+# Hide raw SteelSeries Nimbus (0111:1420) input nodes (event* and js*) from
+# Steam, SDL2, Wine/Proton, and libinput before 73-seat-late.rules applies uaccess
+# so only the virtual Xbox 360 pad created by steelseries.nimbus-fix is visible.
+ACTION!="remove", SUBSYSTEM=="input", ATTRS{id/bustype}=="0005", ATTRS{id/vendor}=="0111", ATTRS{id/product}=="1420", ENV{ID_INPUT}="", ENV{ID_INPUT_JOYSTICK}="", ENV{ID_INPUT_KEY}="", ENV{LIBINPUT_IGNORE_DEVICE}="1", TAG-="uaccess", OWNER:="root", GROUP:="root", MODE:="0000"
