@@ -70,3 +70,7 @@ sudo rm -f /etc/udev/rules.d/71-steelseries-nimbus-fix.rules
 sudo udevadm control --reload-rules
 sudo udevadm trigger --subsystem-match=input --subsystem-match=hidraw
 ```
+
+## Credits
+
+Built with Gemini 4 Hydrogen.
